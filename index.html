@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalPSD - Premium Digital Assets</title>
+    <style>
+        /* CSS Variables for Minimalist Digital Theme */
+        :root {
+            --bg-dark: #0a0f16;
+            --bg-card: #151c27;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --accent-cyan: #00f0ff;
+            --accent-hover: #00c3d0;
+            --border-color: #2a3546;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header / Hero Section */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            border-bottom: 1px solid var(--border-color);
+            background: radial-gradient(circle at top, #111e30 0%, var(--bg-dark) 80%);
+        }
+
+        h1.logo {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        h1.logo span {
+            color: var(--accent-cyan);
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Product Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        /* Product Card */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.1);
+            border-color: var(--accent-cyan);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-cyan);
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: var(--accent-cyan);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 12px;
+            padding: 40px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #fff;
+        }
+
+        .modal-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .modal-box p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .modal-box input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-dark);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .modal-box input[type="email"]:focus {
+            border-color: var(--accent-cyan);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">Global<span>PSD</span></h1>
+        <p class="hero-desc">Download premium, high-quality PSD templates for your next digital project. Minimalist, organized, and ready to use.</p>
+    </header>
+
+    <div class="container">
+        <div class="grid" id="productGrid">
+            </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 GlobalPSD. All rights reserved.</p>
+    </footer>
+
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal-box">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2>Complete Purchase</h2>
+            <p>Enter your email to receive the download link after payment.</p>
+            <input type="email" id="userEmail" placeholder="Enter your email address" required>
+            <button class="btn" id="payBtn">Pay $12 & Download</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Generate 10 Products dynamically
+        const productGrid = document.getElementById('productGrid');
+        
+        for (let i = 1; i <= 10; i++) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="https://placehold.co/600x400/151c27/00f0ff?text=PSD+Design+${i}" alt="PSD Product ${i}">
+                <div class="card-content">
+                    <h3 class="card-title">Premium Album PSD ${i}</h3>
+                    <div class="card-price">$12</div>
+                    <button class="btn download-btn">Download Now</button>
+                </div>
+            `;
+            productGrid.appendChild(card);
+        }
+
+        // 2. Modal Logic
+        const modal = document.getElementById('paymentModal');
+        const closeBtn = document.getElementById('closeModal');
+        const payBtn = document.getElementById('payBtn');
+        const emailInput = document.getElementById('userEmail');
+        
+        // Attach event listeners to all newly created "Download Now" buttons
+        const downloadBtns = document.querySelectorAll('.download-btn');
+        downloadBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                emailInput.value = ''; // Clear previous input
+            });
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Close modal if clicking outside the box
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Handle Payment Button Click
+        payBtn.addEventListener('click', () => {
+            const email = emailInput.value.trim();
+            
+            // Basic email validation
+            if (email && email.includes('@') && email.includes('.')) {
+                // Redirect to BuyMeACoffee link
+                window.location.href = "https://buymeacoffee.com/widget/page/marketpsdd?color=%23FF5F5F&description=Support%20me%20on%20Buy%20me%20a%20coffee%21";
+            } else {
+                alert("Please enter a valid email address before proceeding to payment.");
+            }
+        });
+    </script>
+</body>
+</html>
